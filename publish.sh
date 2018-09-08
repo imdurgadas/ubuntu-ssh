@@ -2,8 +2,8 @@
 
 set -eou pipefail
 
-ARCHS=(arm arm64 s390x amd64 ppc64le)
-QEMUARCHS=(arm aarch64 s390x x86_64 ppc64le)
+ARCHS=(arm s390x amd64 ppc64le)
+QEMUARCHS=(arm s390x x86_64 ppc64le)
 QEMUVER="v2.12.0-1"
 REGISTRY="durgadas"
 IMAGE="ubuntu-ssh"
@@ -70,8 +70,6 @@ get-base-image() {
         BASEIMAGE="ubuntu"
     elif [[ $arch == arm ]]; then
         BASEIMAGE="arm32v7/ubuntu"
-    elif [[ $arch == arm64 ]]; then
-        BASEIMAGE="arm64v8/ubuntu"
     elif [[ $arch == s390x ]]; then
         BASEIMAGE="s390x/ubuntu"
     elif [[ $arch == ppc64le ]]; then
