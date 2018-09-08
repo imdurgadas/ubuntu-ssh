@@ -146,6 +146,8 @@ cleanup() {
     rm -rf Dockerfile-*
 }
 
+debug=false
+
 # Process arguments
 while [[ $# -gt 0 ]]; do
     key="$1"
