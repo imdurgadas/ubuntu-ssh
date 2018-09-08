@@ -116,15 +116,12 @@ publish() {
     local version=$1
     local tag="${version}"
     
-    build_opts=(--no-cache --pull)
-
     for arch in ${ARCHS[*]}; do
         get-base-image "$arch"
 
         docker build --file "Dockerfile-$arch" \
-                     --tag "$REGISTRY/$IMAGE:${tag}-${arch}" \
-                     "${build_opts[@]+"${build_opts[@]}"}" .
-
+                     --tag "$REGISTRY/$IMAGE:${tag}-${arch}" .
+    
         docker push "$REGISTRY/$IMAGE:${tag}-${arch}"
     done
 }
